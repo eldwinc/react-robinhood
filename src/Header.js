@@ -5,16 +5,16 @@ import './App.js';
 
 function Header() {
   return (
-    <div className="header__wrapper">
-      <div className="header__logo">
+    <div className="header-wrapper">
+      <div className="header-logo">
         <img src={Logo} width={25} />
       </div>
-      <div className="header__serach">
-        <div className="header__searchContainer">
+      <div className="header-search">
+        <div className="header-searchContainer">
           <input placeholder="Search" type="text" />
         </div>
       </div>
-      <div className="header__menuItems">
+      <div className="header-menuItems">
         <a href="#">Free Stocks</a>
         <a href="#">Portfolio</a>
         <a href="#">Cash</a>

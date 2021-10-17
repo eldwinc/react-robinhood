@@ -1,7 +1,7 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
 
-function LineGraph() {
+function Linegraph() {
   const data = [
     {
       x: 10,
@@ -41,4 +41,4 @@ function LineGraph() {
   );
 }
 
-export default LineGraph;
+export default Linegraph;

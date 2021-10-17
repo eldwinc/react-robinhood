@@ -7,11 +7,11 @@ import Stats from './Stats';
 export default function App() {
   return (
     <div className="App">
-      <div className="app__header">
+      <div className="app-header">
         <Header />
       </div>
-      <div className="app__body">
-        <div className="app__container">
+      <div className="app-body">
+        <div className="app-container">
           <Newsfeed />
           <Stats />
         </div>
