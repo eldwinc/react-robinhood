@@ -1,3 +1,5 @@
 .stats {
+  background-color: red;
   flex: 0.3;
+  flex-shrink: 0;
 }
