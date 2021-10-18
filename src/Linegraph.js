@@ -18,8 +18,8 @@ function Linegraph() {
   //   },
   // ];
   const [graphData, setGraphData] = useState([]);
-  const aXValues = [];
-  const aYValues = [];
+  const aXValues = [],
+    aYValues = [];
   const createMockData = () => {
     let data = [],
       value = 50;
@@ -51,8 +51,10 @@ function Linegraph() {
     labels: [10, 20, 12],
     // labels: aXValues,
   };
+  const legend = {
+    legend: { display: true, position: 'bottom' },
+  };
   const options = {
-    legend: { display: false },
     maintainAspectRatio: false,
     scales: {
       xAxes: [
@@ -69,6 +71,7 @@ function Linegraph() {
         {
           ticks: {
             display: false,
+            suggestedMin: 0,
           },
         },
       ],
@@ -102,7 +105,7 @@ function Linegraph() {
         }}
         options={options}
       /> */}
-      <Line data={oLinegraphData} />
+      <Line data={oLinegraphData} legend={legend} />
     </div>
   );
 }
