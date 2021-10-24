@@ -1,5 +1,25 @@
 .stats {
-  background-color: red;
+  /* background-color: red; */
+  color: white;
+  display: flex;
   flex: 0.3;
-  flex-shrink: 0;
+  /* flex-shrink: 0; */
+  flex-direction: column;
+  padding: 0px 30px 30px 30px;
+}
+.stats-container {
+  flex-direction: column;
+  flex: 1;
+  background-color: #1e2023;
+  border-radius: 5px;
+  border: 1px solid #42494d;
+}
+.stats-header {
+  align-items: center;
+  border-bottom: 1px solid #42494d;
+  display: flex;
+  font-size: 16px;
+  font-weight: 500;
+  justify-content: center;
+  padding: 20px 20px 10px 20px;
 }
