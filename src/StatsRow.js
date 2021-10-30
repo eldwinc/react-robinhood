@@ -3,6 +3,7 @@ import './StatsRow.css';
 import StockSVG from './stock.svg';
 
 function StatsRow(props) {
+  const percentage = ((props.price - props.openPrice) / props.openPrice) * 100;
   return (
     <div>
       <div className="row">
@@ -14,9 +15,9 @@ function StatsRow(props) {
           <img src={StockSVG} height={16} />
         </div>
         <div class="row-numbers">
-          <p class="row-price">$200</p>
+          <p class="row-price">{props.price}</p>
           {/* <p class="row-price">{props.price}</p> */}
-          <p class="row-percentage"> +200%</p>
+          <p class="row-percentage">{Number(percentage).toFixed(2)}%</p>
         </div>
       </div>
     </div>
