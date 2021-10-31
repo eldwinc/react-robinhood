@@ -1,4 +1,4 @@
-import Firebase from 'firebase';
+import firebase from 'firebase';
 const firebaseConfig = {
   apiKey: 'AIzaSyCUCwjxhnH-D99j1dKmI-tyL3Q057FI1WA',
   authDomain: 'cp-react-robinhood.firebaseapp.com',

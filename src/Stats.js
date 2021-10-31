@@ -2,13 +2,27 @@ import React, { useState, useEffect } from 'react';
 import './Stats.css';
 import axios from 'axios';
 import StatsRow from './StatsRow';
-import { db } from './Firebase';
+import { db } from './firebase';
 
 function Stats() {
   const TOKEN = 'bvkgi0v48v6vtohioj2g';
   const BASE_URL = 'https://finnhub.io/api/v1/quote';
   const [stockData, setstockData] = useState([]);
   const [myStocks, setmyStocks] = useState([]);
+  const getMyStocks = () => {
+    db.collection('myStocks').onSnapshot((snapshot) => {
+      let promises = [];
+      let tempData = [];
+      snapshot.docs.map((doc) => {
+        console.log(snapshot.docs);
+        promises.push(
+          getStocksData(doc.data().ticker).then((res) => {
+            tempData.push({ id: doc.id, data: doc.data(), info: res.data });
+          })
+        );
+      });
+    });
+  };
   const getStocksData = (stock) => {
     return axios
       .get(`${BASE_URL}?symbol=${stock}&token=${TOKEN}`)
@@ -28,8 +42,8 @@ function Stats() {
       'DIS',
       'SBUX',
     ];
-    // getMyStocks();
     let promises = [];
+    getMyStocks();
     stocksList.map((stock) => {
       promises.push(
         getStocksData(stock).then((res) => {
@@ -39,9 +53,16 @@ function Stats() {
       );
     });
     Promise.all(promises).then(() => {
-      // console.log(testData);
-      setstockData(tempStocksData);
-      console.log(tempStocksData);
+      console.log(
+        'testData: ',
+        testData,
+        'tempStocksData: ',
+        tempStocksData,
+        'tempData: ',
+        tempData
+      );
+      // setstockData(tempStocksData);
+      // setstockData(tempData);
     });
   }, []);
   return (
