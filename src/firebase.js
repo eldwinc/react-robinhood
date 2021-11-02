@@ -1,4 +1,7 @@
-import firebase from 'firebase';
+// import firebase from 'firebase';
+import { initializeApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore/lite';
+
 const firebaseConfig = {
   apiKey: 'AIzaSyCUCwjxhnH-D99j1dKmI-tyL3Q057FI1WA',
   authDomain: 'cp-react-robinhood.firebaseapp.com',
@@ -9,6 +12,8 @@ const firebaseConfig = {
   measurementId: 'G-NLE375QG7B',
 };
 
-const firebaseApp = firebase.initializeApp(firebaseConfig);
-const db = firebaseApp.firestore;
+// const firebaseApp = firebase.initializeApp(firebaseConfig);
+// const db = firebaseApp.firestore;
+const firebaseApp = initializeApp(firebaseConfig);
+const db = getFirestore(firebaseApp);
 export { db };

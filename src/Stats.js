@@ -3,14 +3,16 @@ import './Stats.css';
 import axios from 'axios';
 import StatsRow from './StatsRow';
 import { db } from './firebase';
-// f u
+import { collection, getDocs } from 'firebase/firestore/lite';
+
 function Stats() {
   const TOKEN = 'bvkgi0v48v6vtohioj2g';
   const BASE_URL = 'https://finnhub.io/api/v1/quote';
   const [stockData, setstockData] = useState([]);
   const [myStocks, setmyStocks] = useState([]);
   const getMyStocks = () => {
-    db.collection('myStocks').onSnapshot((snapshot) => {
+    const myStocksCollection = collection(db, 'cities');
+    getDocs(myStocksCollection).then((snapshot) => {
       let promises = [];
       let tempData = [];
       snapshot.docs.map((doc) => {
@@ -22,6 +24,18 @@ function Stats() {
         );
       });
     });
+    // db.collection('myStocks').onSnapshot((snapshot) => {
+    //   let promises = [];
+    //   let tempData = [];
+    //   snapshot.docs.map((doc) => {
+    //     console.log(snapshot.docs);
+    //     promises.push(
+    //       getStocksData(doc.data().ticker).then((res) => {
+    //         tempData.push({ id: doc.id, data: doc.data(), info: res.data });
+    //       })
+    //     );
+    //   });
+    // });
   };
   const getStocksData = (stock) => {
     return axios
