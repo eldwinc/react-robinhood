@@ -9,7 +9,7 @@ function Stats() {
   const TOKEN = 'bvkgi0v48v6vtohioj2g';
   const BASE_URL = 'https://finnhub.io/api/v1/quote';
   const [stockData, setstockData] = useState([]);
-  const [myStocks, setmyStocks] = useState([]);
+  const [myStocks, setMyStocks] = useState([]);
   const getMyStocks = () => {
     const myStocksCollection = collection(db, 'myStocks');
     console.log(myStocksCollection);
@@ -78,7 +78,7 @@ function Stats() {
         tempData
       );
       // setstockData(tempStocksData);
-      // setstockData(tempData);
+      setMyStocks(tempData);
     });
   }, []);
   return (
