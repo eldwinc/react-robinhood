@@ -11,10 +11,12 @@ function Stats() {
   const [stockData, setstockData] = useState([]);
   const [myStocks, setmyStocks] = useState([]);
   const getMyStocks = () => {
-    const myStocksCollection = collection(db, 'cities');
+    const myStocksCollection = collection(db, 'myStocks');
+    console.log(myStocksCollection);
     getDocs(myStocksCollection).then((snapshot) => {
       let promises = [];
       let tempData = [];
+      console.log('HI');
       snapshot.docs.map((doc) => {
         console.log(snapshot.docs);
         promises.push(
